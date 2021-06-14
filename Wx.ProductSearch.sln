@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wx.ProductSearch.Web", "Wx.ProductSearch.Web\Wx.ProductSearch.Web.csproj", "{4F370A8C-4311-4629-95E8-ADB320CC98F3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wx.ProductSearch.Application", "Wx.ProductSearch.Application\Wx.ProductSearch.Application.csproj", "{B3C87D8A-B2FE-4433-9F2E-E7441E579115}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wx.ProductSearch.Interfaces", "Wx.ProductSearch.Interfaces\Wx.ProductSearch.Interfaces.csproj", "{CF62BAEF-A48B-4734-A095-FAFEA6FE42D5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Wx.ProductSearch.Models", "Wx.ProductSearch.Models\Wx.ProductSearch.Models.csproj", "{1F4867C4-18CF-473A-873E-1405F6F766FF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wx.ProductSearch.Domain", "Wx.ProductSearch.Domain\Wx.ProductSearch.Domain.csproj", "{DDDE8DF7-3956-4DFF-A2A8-4C3595EAC984}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wx.ProductSearch.Tests", "Wx.ProductSearch.Tests\Wx.ProductSearch.Tests.csproj", "{0811C14C-0569-41CF-BB23-97F83F3B84FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4F370A8C-4311-4629-95E8-ADB320CC98F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F370A8C-4311-4629-95E8-ADB320CC98F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F370A8C-4311-4629-95E8-ADB320CC98F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F370A8C-4311-4629-95E8-ADB320CC98F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3C87D8A-B2FE-4433-9F2E-E7441E579115}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3C87D8A-B2FE-4433-9F2E-E7441E579115}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3C87D8A-B2FE-4433-9F2E-E7441E579115}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3C87D8A-B2FE-4433-9F2E-E7441E579115}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF62BAEF-A48B-4734-A095-FAFEA6FE42D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF62BAEF-A48B-4734-A095-FAFEA6FE42D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF62BAEF-A48B-4734-A095-FAFEA6FE42D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF62BAEF-A48B-4734-A095-FAFEA6FE42D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F4867C4-18CF-473A-873E-1405F6F766FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F4867C4-18CF-473A-873E-1405F6F766FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F4867C4-18CF-473A-873E-1405F6F766FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F4867C4-18CF-473A-873E-1405F6F766FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDDE8DF7-3956-4DFF-A2A8-4C3595EAC984}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDDE8DF7-3956-4DFF-A2A8-4C3595EAC984}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDDE8DF7-3956-4DFF-A2A8-4C3595EAC984}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDDE8DF7-3956-4DFF-A2A8-4C3595EAC984}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0811C14C-0569-41CF-BB23-97F83F3B84FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0811C14C-0569-41CF-BB23-97F83F3B84FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0811C14C-0569-41CF-BB23-97F83F3B84FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0811C14C-0569-41CF-BB23-97F83F3B84FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B36F6E2E-5BA5-4A61-8D05-153D65D4F161}
+	EndGlobalSection
+EndGlobal
