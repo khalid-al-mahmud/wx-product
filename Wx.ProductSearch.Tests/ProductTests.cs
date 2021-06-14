@@ -8,6 +8,7 @@ using Newtonsoft.Json;
 using NSubstitute;
 using Wx.ProductSearch.Application.Process;
 using Wx.ProductSearch.Application.Services;
+using Wx.ProductSearch.Domain.Cart;
 using Wx.ProductSearch.Domain.Sorting;
 using Wx.ProductSearch.Interfaces;
 using Wx.ProductSearch.Models;
@@ -21,13 +22,14 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Default_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory= new SortingAlgorithmFactory();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
 
             productService.GetProducts().Returns(ProductList());
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("");
 
             sortedProucts.First().Name.Should().Be("Test Product D");
@@ -38,13 +40,14 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Low_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
 
             productService.GetProducts().Returns(ProductList());
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("Low");
 
             sortedProucts.First().Name.Should().Be("Test Product D");
@@ -55,13 +58,14 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task High_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
 
             productService.GetProducts().Returns(ProductList());
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("High");
 
             sortedProucts.Last().Name.Should().Be("Test Product D");
@@ -73,13 +77,14 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Descending_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
 
             productService.GetProducts().Returns(ProductList());
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("Descending");
 
             sortedProucts.First().Name.Should().Be("Test Product F");
@@ -90,6 +95,7 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Ascending_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
@@ -97,7 +103,7 @@ namespace Wx.ProductSearch.Tests
             productService.GetProducts().Returns(ProductList());
 
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("Ascending");
 
             sortedProucts.First().Name.Should().Be("Test Product A");
@@ -109,6 +115,7 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Recommended_Sort_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = Substitute.For<IShoppingCartFactory>();
             ISortingAlgorithmFactory sortingAlgorithmFactory = new SortingAlgorithmFactory();
             
             
@@ -120,7 +127,7 @@ namespace Wx.ProductSearch.Tests
             productService.GetShopperHistory().Returns(ShoppingHistory());
 
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var sortedProucts = await shoppingCartProcess.SortProducts("Recommended");
 
             sortedProucts.First().Name.Should().Be("Test Product A");
@@ -132,11 +139,12 @@ namespace Wx.ProductSearch.Tests
         [Fact]
         public async Task Trolly_calculate_Success()
         {
+            IShoppingCartFactory shoppingCartFactory = new ShoppingCartFactory();
             ISortingAlgorithmFactory sortingAlgorithmFactory = Substitute.For<ISortingAlgorithmFactory>();
             IProductService productService = Substitute.For<IProductService>();
             ISortingService sortingService = new SortingService(sortingAlgorithmFactory);
 
-            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService);
+            var shoppingCartProcess = new ShoppingCartProcess(productService, sortingService, shoppingCartFactory);
             var total = await shoppingCartProcess.CalculateShoppingCart(TrollyData());
 
             total.Should().Be(27.9m);

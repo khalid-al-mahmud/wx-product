@@ -7,14 +7,16 @@ namespace Wx.ProductSearch.Domain.Cart
     public class ShoppoingCart
     {
 
-        public Trolly _trolly;
-        private List<ProductLineItem> LineItems = new List<ProductLineItem>();
+        private Trolly _trolly;
+      
+        public List<ProductLineItem> LineItems = new List<ProductLineItem>();
         private decimal TotalSpecialPrice = 0;
 
 
         public ShoppoingCart(Trolly trolly)
         {
             _trolly = trolly;
+         
             BuildLineItems();
         }
 
@@ -27,7 +29,6 @@ namespace Wx.ProductSearch.Domain.Cart
         {
             foreach (var special in _trolly.Specials.OrderByDescending(s=>s.Total))
             {
-                var specialProducts = special.Quantities.Select(p => p).ToList();
 
                 while (IsSpecialApplicable(LineItems, special))
                 {
@@ -70,6 +71,10 @@ namespace Wx.ProductSearch.Domain.Cart
             return true;
         }
 
+        public void AddToSpecialPrice(decimal price)
+        {
+            TotalSpecialPrice = TotalSpecialPrice + price;
+        }
 
         private decimal TotalLineItemPrice => LineItems.Sum(l => l.Total);
         

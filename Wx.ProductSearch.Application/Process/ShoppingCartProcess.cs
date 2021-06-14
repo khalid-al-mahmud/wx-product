@@ -15,13 +15,16 @@ namespace Wx.ProductSearch.Application.Process
     {
         private readonly IProductService _productService;
         private readonly ISortingService _sortingService;
+        private readonly IShoppingCartFactory _shoppingCartFactory;
 
         public ShoppingCartProcess(
             IProductService productService,
-            ISortingService sortingService)
+            ISortingService sortingService,
+            IShoppingCartFactory shoppingCartFactory)
         {
             _productService = productService;
             _sortingService = sortingService;
+            _shoppingCartFactory = shoppingCartFactory;
         }
 
         public async Task<List<Product>> SortProducts(string sortOption)
@@ -46,7 +49,7 @@ namespace Wx.ProductSearch.Application.Process
 
         public Task<decimal> CalculateShoppingCart(Trolly trolly)
         {
-            var shoppingCart = ShoppoingCart.Create(trolly);
+            var shoppingCart = _shoppingCartFactory.Get(trolly);
             var total = shoppingCart.Calculate();
 
             return Task.FromResult(total);

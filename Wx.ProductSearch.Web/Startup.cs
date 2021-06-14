@@ -13,6 +13,7 @@ using Microsoft.Extensions.Logging;
 using Wx.ProductSearch.Application;
 using Wx.ProductSearch.Application.Process;
 using Wx.ProductSearch.Application.Services;
+using Wx.ProductSearch.Domain.Cart;
 using Wx.ProductSearch.Domain.Config;
 using Wx.ProductSearch.Domain.Sorting;
 using Wx.ProductSearch.Interfaces;
@@ -41,6 +42,7 @@ namespace Wx.ProductSearch.Web
 
             services.AddTransient<ISortingAlgorithmFactory, SortingAlgorithmFactory>();
 
+            services.AddTransient<IShoppingCartFactory, ShoppingCartFactory>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<ISortingService, SortingService>();
             services.AddTransient<IShoppingCartProcess, ShoppingCartProcess>();
